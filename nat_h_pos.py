@@ -154,7 +154,7 @@ if __name__ == "__main__":
     for arr in output_arr:
         print(arr)
         f = open(foldername+"/"+foldername+"_"+str(i)+".vasp", 'w')
-        copyfile("O91.vasp", foldername+"/"+foldername+"_"+str(i)+".vasp")
+        copyfile("template.vasp", foldername+"/"+foldername+"_"+str(i)+".vasp")
         f = open(foldername+"/"+foldername+"_"+str(i)+".vasp", 'a')
         f.write('\n')
         f.write(str(args[1]) + "    " + str(args[2]) + "    " +  str(args[3]))
