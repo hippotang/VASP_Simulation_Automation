@@ -126,21 +126,43 @@ if __name__ == "__main__":
     
     output_arr = []
     custom_o_pos = []
-    # if "custom" in args:
-    #     try:
-    #         custom_o_pos = np.array([args[2], args[3], args[4]])
-    #         get_h_positions(output_arr, custom_o_pos)
-    #     except:
-    #         "enter valid x, y, and z positions"
-    # else:
-    #     o_np_pos = np.array([10.182119370,        12.841658592,         0.716099977])
-    #     get_h_positions(output_arr, o_np_pos)
+ 
+    # 1.032119989         3.526658773         0.716099977 O81
+    # 17.267879486        15.103340149         0.716099977 O82
+    #  5.607119560         1.130840898         2.366100073 O83
+    #  3.542879820         8.184158325         2.366100073 O84
+    #  1.032119989        12.841658592         4.016099930 O85
+    # 17.267879486         5.788340569         4.016099930 O86
+    #  5.607119560        10.445840836         5.666100025 O87
+    #  3.542879820        17.499158859         5.666100025 O88
+    # 10.182119370         3.526658773         4.016099930 O89
+    #  8.117879868        15.103340149         4.016099930 O90
+    # 14.757119179         1.130840898         5.666100025 O91
+    # 12.692879677         8.184158325         5.666100025 O92
+    # 10.182119370        12.841658592         0.716099977 O93
+    #  8.117879868         5.788340569         0.716099977 O94
+    # 14.757119179        10.445840836         2.366100073 O95
+    # 12.692879677        17.499158859         2.366100073 O96
 
     custom_o_pos = np.array([float(args[1]), float(args[2]), float(args[3])])
-    get_h_positions(output_arr, custom_o_pos, distance_tolerance=4)
+    foldername = str(args[4])
+    os.mkdir(foldername)
+    
+    get_h_positions(output_arr, custom_o_pos, distance_tolerance=5, angle_tolerance=4)
+    
+    i = 0
     for arr in output_arr:
         print(arr)
-        
+        f = open(foldername+"/"+foldername+"_"+str(i)+".vasp", 'w')
+        copyfile("O91.vasp", foldername+"/"+foldername+"_"+str(i)+".vasp")
+        f = open(foldername+"/"+foldername+"_"+str(i)+".vasp", 'a')
+        f.write('\n')
+        f.write(str(args[1]) + "    " + str(args[2]) + "    " +  str(args[3]))
+        f.write('\n')
+        f.write( str(output_arr[i][0].item(0)) + "    " + str(output_arr[i][0].item(1)) + "    " + str(output_arr[i][0].item(2)) )
+        f.write('\n')
+        f.write( str(output_arr[i][1].item(0)) + "    " + str(output_arr[i][1].item(1)) + "    " + str(output_arr[i][1].item(2)) )
+        i+=1
 
 
         
