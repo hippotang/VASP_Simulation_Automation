@@ -30,7 +30,7 @@ Generating possible orientations for a water molecule located at a hydration sit
     
     ```python nat_h_pos.py x y z foldername```
     
-    All possible POSCARs will be stored in "foldername"
+   All possible POSCARs will be stored in "foldername"
  ## For any other zeolite with known hydration sites 
  1. Replace the framework_o_pos in nat_h_pos.py with the positions of oxygen atoms in your preferred zeolite
  2. Create template.vasp and run nat_h_pos.py as specified in the "For Natrolite" section
